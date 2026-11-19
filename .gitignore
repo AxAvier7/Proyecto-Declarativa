@@ -1,0 +1,31 @@
+# Haskell build artifacts
+*.hi
+*.o
+*.dyn_hi
+*.dyn_o
+*.p_hi
+*.p_o
+*.hie
+*.prof
+*.hp
+*.aux
+
+# Local executables and build dirs
+*.exe
+/dist-newstyle/
+dist/
+dist-*/
+cabal.project.local
+cabal.project.local~
+.stack-work/
+.ghc.environment.*
+*.cabal-sandbox/
+
+# Editors and OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+extras/
