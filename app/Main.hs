@@ -5,6 +5,7 @@ import Expr ()
 import Simplificar ()
 import Derivar ()
 import Arbol ()
+import Pretty ()
 
 main :: IO ()
 main = putStrLn "Evaluador de expresiones: esqueleto inicial"
