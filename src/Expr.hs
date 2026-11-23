@@ -1,7 +1,9 @@
 -- | Módulo Expr
 -- Propósito: definir el tipo recursivo que representa expresiones aritméticas
 -- y simbólicas, junto con sus instancias básicas.
-module Expr (Expr(..), eval, evalCon) where
+module Expr (Expr(..), eval, evalCon, variables) where
+    import Data.List (nub)
+
     data Expr
         = Lit Integer
         -- ^ Literal entero
@@ -16,6 +18,17 @@ module Expr (Expr(..), eval, evalCon) where
         | Div Expr Expr
         -- ^ Division entera de dos subexpresiones
         deriving(Show, Eq)
+
+    -- | Variables distintas de una expresión, en orden de primera aparición.
+    variables :: Expr -> [String]
+    variables = nub . vars
+      where
+        vars (Lit _)     = []
+        vars (Var x)     = [x]
+        vars (Suma a b)  = vars a ++ vars b
+        vars (Resta a b) = vars a ++ vars b
+        vars (Mult a b)  = vars a ++ vars b
+        vars (Div a b)   = vars a ++ vars b
 
     -- | Evalúa una expresión cerrada (sin variables libres).
     --
